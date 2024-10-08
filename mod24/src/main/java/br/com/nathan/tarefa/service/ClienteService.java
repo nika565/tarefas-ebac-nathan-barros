@@ -15,4 +15,19 @@ public class ClienteService {
         return "Sucesso";
     }
 
+    public String buscar(){
+        this.clienteDao.buscar();
+        return "Dados retornados com sucesso";
+    }
+
+    public String atualizar(){
+        this.clienteDao.atualizar();
+        return "Dados atualizados";
+    }
+
+    public String excluir(){
+        this.clienteDao.excluir();
+        return "Dados excluidos";
+    }
+
 }

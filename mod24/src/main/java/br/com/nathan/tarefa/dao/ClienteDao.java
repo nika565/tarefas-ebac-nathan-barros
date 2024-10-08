@@ -6,4 +6,22 @@ public class ClienteDao implements IClienteDao{
         throw new UnsupportedOperationException("Operação não suportada");
 //        return "";
     }
+
+    @Override
+    public String buscar() {
+        throw new UnsupportedOperationException("Operação não suportada");
+//        return "";
+    }
+
+    @Override
+    public String atualizar() {
+        throw new UnsupportedOperationException("Operação não suportada");
+//        return "";
+    }
+
+    @Override
+    public String excluir() {
+        throw new UnsupportedOperationException("Operação não suportada");
+//        return "";
+    }
 }
