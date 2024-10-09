@@ -4,23 +4,24 @@ import br.com.nathan.project.DAO.ClienteDaoMock;
 import br.com.nathan.project.DAO.IClienteDAO;
 import br.com.nathan.project.domain.Cliente;
 import br.com.nathan.project.service.ClienteService;
-import br.com.nathan.project.service.ClienteServiceMock;
 import br.com.nathan.project.service.IClienteService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-public class ClienteTest {
+public class ClienteServiceTest {
 
     private IClienteService clienteService;
+    private Cliente cliente;
 
-    public ClienteTest(){
+    public ClienteServiceTest(){
         IClienteDAO dao = new ClienteDaoMock();
         this.clienteService = new ClienteService(dao);
     }
 
-    @Test
-    public void pesquisarCliente(){
-        Cliente cliente = new Cliente();
+    @Before
+    public void init(){
+        cliente = new Cliente();
         cliente.setNome("Nathan");
         cliente.setCpf(12345678910L);
         cliente.setCidade("São Paulo");
@@ -30,9 +31,31 @@ public class ClienteTest {
         cliente.setTel(11912345678L);
 
         clienteService.salvar(cliente);
-        Cliente clienteConsultado = clienteService.buscarPorCpf(cliente.getCpf());
+    }
 
+    @Test
+    public void pesquisarCliente(){
+        Cliente clienteConsultado = clienteService.buscarPorCpf(cliente.getCpf());
         Assert.assertNotNull(clienteConsultado);
+    }
+
+    @Test
+    public void salvarCliente() {
+        Boolean retorno = clienteService.salvar(cliente);
+        Assert.assertTrue(retorno);
+    }
+
+    @Test
+    public void excluirCliente(){
+        clienteService.excluir(cliente.getCpf());
+    }
+
+    @Test
+    public void alterarCliente(){
+        cliente.setNome("Dante Barros");
+        clienteService.alterar(cliente);
+
+        Assert.assertEquals("Dante Barros", cliente.getNome());
     }
 
 }
