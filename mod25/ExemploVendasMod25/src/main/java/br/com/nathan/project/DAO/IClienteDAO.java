@@ -1,10 +1,16 @@
 package br.com.nathan.project.DAO;
 
-import br.com.nathan.project.domain.Cliente;
+import Modulo25.ExemploVendasMod25.main.dao.generics.IGenericDAO;
+import Modulo25.ExemploVendasMod25.main.domain.Cliente;
 
-public interface IClienteDAO {
-    Boolean salvar(Cliente cliente);
-    Cliente buscarPorCpf(Long cpf);
+public interface IClienteDAO extends IGenericDAO<Cliente> {
+
+    /* Boolean salvar(Cliente cliente);
+
+    Cliente buscarPorCPF(Long cpf);
+
     void excluir(Long cpf);
+
     void alterar(Cliente cliente);
+     */
 }

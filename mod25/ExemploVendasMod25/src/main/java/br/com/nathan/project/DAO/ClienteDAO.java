@@ -2,24 +2,20 @@ package br.com.nathan.project.DAO;
 
 import br.com.nathan.project.domain.Cliente;
 
-public class ClienteDAO implements IClienteDAO{
-    @Override
-    public Boolean salvar(Cliente cliente) {
-        return true;
+public class ClienteDAO extends GenericDAO<Cliente> implements IClienteDAO {
+
+    public ClienteDAO() {
+        super();
     }
 
     @Override
-    public Cliente buscarPorCpf(Long cpf) {
-        return null;
+    public Class<Cliente> getTipoClasse() {
+        return Cliente.class;
     }
 
     @Override
-    public void excluir(Long cpf) {
+    public void atualiarDados(Cliente entity, Cliente entityCadastrado) {
 
     }
 
-    @Override
-    public void alterar(Cliente cliente) {
-
-    }
 }

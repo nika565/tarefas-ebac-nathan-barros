@@ -12,50 +12,54 @@ import org.junit.Test;
 public class ClienteServiceTest {
 
     private IClienteService clienteService;
+
     private Cliente cliente;
 
-    public ClienteServiceTest(){
+    public ClienteServiceTest() {
+
         IClienteDAO dao = new ClienteDaoMock();
-        this.clienteService = new ClienteService(dao);
+        clienteService = new ClienteService(dao);
+
     }
 
     @Before
-    public void init(){
+    public void init() {
         cliente = new Cliente();
-        cliente.setNome("Nathan");
-        cliente.setCpf(12345678910L);
+        cliente.setCpf(1234567891L);
+        cliente.setNome("Bella");
         cliente.setCidade("São Paulo");
         cliente.setEnd("End");
         cliente.setEstado("SP");
         cliente.setNumero(10);
-        cliente.setTel(11912345678L);
-
-        clienteService.salvar(cliente);
+        cliente.setTel(12997161270L);
+        //clienteService.salvar(cliente);
     }
 
     @Test
-    public void pesquisarCliente(){
-        Cliente clienteConsultado = clienteService.buscarPorCpf(cliente.getCpf());
+    public void pesquisarCliente() {
+
+        Cliente clienteConsultado = clienteService.buscarPorCPF(cliente.getCpf());
         Assert.assertNotNull(clienteConsultado);
+
     }
 
     @Test
-    public void salvarCliente() {
+    public void salvarCliente() throws TipoChaveNaoEncontradaException {
         Boolean retorno = clienteService.salvar(cliente);
         Assert.assertTrue(retorno);
     }
 
     @Test
-    public void excluirCliente(){
+    public void excluirCliente() {
         clienteService.excluir(cliente.getCpf());
     }
 
     @Test
-    public void alterarCliente(){
-        cliente.setNome("Dante Barros");
+    public void alterarCliente() throws TipoChaveNaoEncontradaException {
+        cliente.setNome("Bella Cabral");
         clienteService.alterar(cliente);
 
-        Assert.assertEquals("Dante Barros", cliente.getNome());
+        Assert.assertEquals("Bella Cabral", cliente.getNome());
     }
 
 }
