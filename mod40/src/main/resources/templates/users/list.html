@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="<http://www.thymeleaf.org>">
+<head>
+    <title>Lista de usuários</title>
+</head>
+<body>
+<h1>Usuários</h1>
+<a href="/users/new">Clique aqui para realizar um novo cadastro</a>
+<ul>
+    <li th:each="user : ${users}">
+        <span th:text="${user.nome} + ' | ' + ${user.email}">Usuários</span>
+    </li>
+</ul>
+</body>
+</html>
